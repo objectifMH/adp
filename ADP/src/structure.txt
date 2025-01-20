@@ -1,0 +1,75 @@
+src/
+├── app/
+│   ├── core/                   # Services, interceptors, guards, etc. (singletons)
+│   │   ├── guards/             # Guards d'authentification
+│   │   ├── interceptors/       # Intercepteurs HTTP
+│   │   ├── services/           # Services globaux (ex: AuthService, ApiService)
+│   │   └── core.module.ts      # Module Core (importé une seule fois dans AppModule)
+│   │
+│   ├── shared/                 # Composants, directives, pipes réutilisables
+│   │   ├── components/         # Composants partagés (ex: header, footer, buttons)
+│   │   ├── directives/         # Directives personnalisées
+│   │   ├── pipes/              # Pipes personnalisés
+│   │   ├── models/             # Interfaces et classes de modèle
+│   │   └── shared.module.ts    # Module Shared (importé dans d'autres modules)
+│   │
+│   ├── features/               # Modules fonctionnels (par feature)
+│   │   ├── home/               # Module Home (page d'accueil)
+│   │   │   ├── components/     # Composants spécifiques à la page d'accueil
+│   │   │   └── home.module.ts  # Module Home
+│   │   │
+│   │   ├── product/            # Module Product (gestion des produits)
+│   │   │   ├── components/     # Composants spécifiques aux produits
+│   │   │   ├── services/       # Services spécifiques aux produits
+│   │   │   └── product.module.ts # Module Product
+│   │   │
+│   │   ├── cart/               # Module Cart (panier d'achat)
+│   │   │   ├── components/     # Composants spécifiques au panier
+│   │   │   ├── services/       # Services spécifiques au panier
+│   │   │   └── cart.module.ts  # Module Cart
+│   │   │
+│   │   └── ...                 # Autres modules (ex: user, checkout, etc.)
+│   │
+│   ├── app-routing.module.ts   # Routes principales de l'application
+│   ├── app.component.ts        # Composant racine de l'application
+│   ├── app.component.scss      # Styles globaux du composant racine
+│   └── app.module.ts           # Module racine de l'application
+│
+├── assets/                     # Ressources statiques (images, polices, etc.)
+│   ├── images/                 # Images de l'application
+│   └── styles/                 # Fichiers SCSS globaux (ex: variables, mixins)
+│
+├── environments/               # Configurations d'environnement (dev, prod, etc.)
+│   ├── environment.ts          # Configuration pour l'environnement de développement
+│   └── environment.prod.ts     # Configuration pour l'environnement de production
+│
+├── styles.scss                 # Fichier SCSS global (importe les styles communs)
+└── main.ts                     # Point d'entrée de l'application
+
+Explications des dossiers :
+core/ :
+Contient les services, intercepteurs et guards qui sont utilisés globalement dans l'application. Ces éléments sont généralement des singletons (instanciés une seule fois).
+
+shared/ :
+Contient les composants, directives, pipes et modèles réutilisables dans toute l'application. Ce module est importé dans les autres modules fonctionnels.
+
+features/ :
+Organisé par fonctionnalité (ex: home, product, cart). Chaque fonctionnalité a son propre module, composants et services. Cela permet une séparation claire des responsabilités et facilite le lazy loading.
+
+assets/ :
+Contient les ressources statiques comme les images, polices, etc. Vous pouvez également y ajouter un dossier styles/ pour les variables SCSS globales, mixins, etc.
+
+environments/ :
+Contient les configurations spécifiques à chaque environnement (développement, production, etc.).
+
+styles.scss :
+Le fichier SCSS global qui importe les styles communs à toute l'application.
+
+Bonnes pratiques :
+Lazy Loading : Utilisez le lazy loading pour charger les modules fonctionnels (features/) uniquement lorsqu'ils sont nécessaires. Cela améliore les performances de l'application.
+
+SCSS modulaire : Organisez vos fichiers SCSS en les associant à leurs composants. Utilisez des fichiers SCSS globaux pour les variables, mixins et styles communs.
+
+Services par fonctionnalité : Si un service est spécifique à une fonctionnalité, placez-le dans le dossier services/ de cette fonctionnalité. Sinon, mettez-le dans core/.
+
+Interfaces et modèles : Placez les interfaces et classes de modèle dans le dossier shared/models/ pour les réutiliser dans toute l'application.
