@@ -1,0 +1,118 @@
+// Mixins
+@mixin flex-center($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  }
+}
+
+// Styles du footer
+.footer {
+  background: linear-gradient(
+    150deg,
+    var(--primary-color),
+    var(--primary-color-gradient)
+  );
+  color: var(--secondary-color);
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+
+  .footer-content {
+    @include flex-center(row);
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    @include respond-to(mobile) {
+      @include flex-center(column);
+      text-align: center;
+    }
+  }
+
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--accent-color);
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--secondary-color);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        margin-bottom: 10px;
+
+        a {
+          color: var(--secondary-color);
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--accent-color);
+          }
+        }
+
+        i {
+          margin-right: 10px;
+          color: var(--accent-color);
+        }
+      }
+    }
+
+    .social-icons {
+      @include flex-center(row);
+      gap: 15px;
+
+      a {
+        color: var(--secondary-color);
+        font-size: 1.2rem;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--accent-color);
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    p {
+      font-size: 0.9rem;
+      margin: 0;
+      color: var(--secondary-color);
+    }
+  }
+}
