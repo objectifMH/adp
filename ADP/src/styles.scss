@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+//@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
 *,
 body {
   font-family: "Be Vietnam Pro", sans-serif;
@@ -18,7 +20,7 @@ body {
 .site-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 0vh;
 }
 
 .main-content {

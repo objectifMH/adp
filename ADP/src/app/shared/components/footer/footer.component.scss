@@ -89,6 +89,7 @@
 
     .social-icons {
       @include flex-center(row);
+      justify-content: start;
       gap: 15px;
 
       a {
