@@ -1,0 +1,31 @@
+<header class="header">
+    <div class="logo">ALCOOL DEPOT VENTE</div>
+
+    <!-- Icône du menu (hamburger ou croix) -->
+    <div class="menu-icon" (click)="toggleMenu()">
+        @if (!isMenuOpen) {
+        <span>&#9776;</span> <!-- Hamburger icon -->
+        } @else {
+        <span>&#10005;</span> <!-- Croix pour fermer -->
+        }
+    </div>
+
+    <!-- Navigation mobile-->
+    <nav class="nav-mobile" [class.active]="isMenuOpen">
+        <a href="#">Accueil</a>
+        <a href="#">Produits</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Navigation desktop-->
+    <nav class="nav-desktop">
+        <a href="#">Accueil</a>
+        <a href="#">Produits</a>
+        <a href="#">À propos</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- <button class="button">Acheter : +33 6 13 34 23 82</button> -->
+
+</header>

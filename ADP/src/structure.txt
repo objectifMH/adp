@@ -73,3 +73,4 @@ SCSS modulaire : Organisez vos fichiers SCSS en les associant à leurs composant
 Services par fonctionnalité : Si un service est spécifique à une fonctionnalité, placez-le dans le dossier services/ de cette fonctionnalité. Sinon, mettez-le dans core/.
 
 Interfaces et modèles : Placez les interfaces et classes de modèle dans le dossier shared/models/ pour les réutiliser dans toute l'application.
+

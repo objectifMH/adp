@@ -1,0 +1,148 @@
+.header {
+  background: linear-gradient(
+    150deg,
+    var(--primary-color),
+    var(--primary-color-gradient)
+  );
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: fantasy;
+    z-index: 2000;
+  }
+
+  .menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+    display: block; // Visible par défaut (sur mobile)
+    text-shadow: rgba(0, 0, 0, 0.75) 2px 2px;
+
+    span {
+      font-weight: bold;
+    }
+  }
+
+  .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 55px; // Ajustez en fonction de la hauteur du header
+    left: 0;
+    width: 100%;
+    background: linear-gradient(
+      150deg,
+      var(--primary-color),
+      var(--primary-color-gradient)
+    );
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out,
+      font-size 0.5s ease-in-out;
+    opacity: 0; // Initialement invisible
+    transform: translateX(100%); // Déplace le menu complètement hors de l'écran
+    font-size: 0;
+
+    &.active {
+      opacity: 1; // Rend le menu visible
+      transform: translateX(0); // Réinitialise le décalage
+      font-size: larger; // Ajuste la taille de la police
+    }
+
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px;
+      text-align: center;
+      border-bottom: 2px solid var(--secondary-color);
+      font-family: fantasy;
+
+      &:hover {
+        color: var(--accent-color);
+      }
+    }
+  }
+
+  .nav-desktop {
+    display: none;
+  }
+
+  // Styles communs pour les liens
+  .nav-mobile,
+  .nav-desktop {
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-size: 18px;
+      padding: 10px;
+      text-align: center;
+      border-bottom: 2px solid var(--secondary-color);
+      font-family: fantasy;
+
+      &:hover {
+        color: var(--accent-color);
+      }
+    }
+  }
+
+  // Styles pour tablette (768px et plus)
+  @media (min-width: 768px) {
+    .menu-icon {
+      display: none; // Cache l'icône du menu sur tablette et desktop
+    }
+
+    .nav-desktop {
+      display: flex; // Affiche le menu par défaut
+      flex-direction: row;
+      position: static;
+      background: none;
+      padding: 0;
+      gap: 20px;
+
+      a {
+        border: 2px solid var(--secondary-color);
+        padding: 6px 12px;
+      }
+    }
+
+    .nav-mobile {
+      display: none !important; // Désactive complètement le menu mobile
+    }
+  }
+
+  // Styles pour desktop (1024px et plus)
+  @media (min-width: 1024px) {
+    .logo {
+      font-size: 28px;
+    }
+
+    .nav-desktop a {
+      font-size: 20px;
+    }
+
+    .button {
+      display: block;
+      width: -webkit-fill-available;
+      background-color: var(--text-color);
+      color: var(--secondary-color);
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 21px;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+      &:hover {
+        background-color: var(--accent-color);
+        transform: translateY(-2px); // Effet de soulèvement au survol
+      }
+    }
+  }
+}
