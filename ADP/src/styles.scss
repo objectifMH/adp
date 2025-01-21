@@ -30,8 +30,10 @@ body {
 }
 
 :root {
-  --primary-color-blue: #003e59;
+  /** --primary-color-blue: #003e59; **/
   --primary-color-gradient: #40bcd6;
+
+  --primary-color: #003e59;
 
   --primary-color: rgb(73, 10, 10);
 

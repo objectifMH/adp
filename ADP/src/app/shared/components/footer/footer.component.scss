@@ -89,7 +89,6 @@
 
     .social-icons {
       @include flex-center(row);
-      justify-content: start;
       gap: 15px;
 
       a {
@@ -100,6 +99,15 @@
         &:hover {
           color: var(--accent-color);
         }
+      }
+
+      // Appliquer justify-content: start pour les écrans plus larges que mobile
+      @include respond-to(tablet) {
+        justify-content: start;
+      }
+
+      @include respond-to(desktop) {
+        justify-content: start;
       }
     }
   }
