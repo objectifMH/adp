@@ -146,3 +146,15 @@
     }
   }
 }
+
+.opacity_true {
+  background: rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75);
+  transition: 0.2s ease-in-out;
+}
+
+.header.opacity_true > * {
+  /* Sélecteur enfant direct */
+  opacity: 1 !important; /* Force l'opacité à 1 pour les enfants directs */
+  //border: 3px solid green !important;
+}
