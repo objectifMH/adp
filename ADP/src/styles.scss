@@ -26,7 +26,11 @@ body {
 .main-content {
   flex: 1;
   margin-top: 50px;
-  background-color: var(--primary-color-gradient);
+  background: linear-gradient(
+    150deg,
+    var(--primary-color),
+    var(--primary-color-gradient)
+  );
 }
 
 :root {

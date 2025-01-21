@@ -18,6 +18,8 @@
     font-weight: bold;
     font-family: fantasy;
     z-index: 2000;
+
+    text-shadow: rgba(0, 0, 0, 0.75) 2px 2px;
   }
 
   .menu-icon {
@@ -85,6 +87,8 @@
       text-align: center;
       border-bottom: 2px solid var(--secondary-color);
       font-family: fantasy;
+
+      //text-shadow: rgba(0, 0, 0, 0.75) 2px 2px;
 
       &:hover {
         color: var(--accent-color);
