@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-carrousel',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './carrousel.component.html',
   styleUrl: './carrousel.component.scss',
 })
@@ -10,13 +11,34 @@ export class CarrouselComponent implements OnInit, OnDestroy {
   slides = [
     {
       image: '/banner.jpg',
-      title: 'Offre spéciale -30%',
-      description: 'Découvrez nos vins sélectionnés !',
+      title: 'ADP votre cave en ligne',
+      description:
+        'Alcool rare, bonnes affaires.<br>Découvrez notre sélection exclusive.',
+      ctaText1: 'Découvrir',
+      ctaLink1: '/products',
     },
     {
       image: '/back_light.jpg',
       title: 'Nouveaux whiskies',
       description: 'Dégustez nos single malt.',
+      ctaText1: 'Explorer',
+      ctaLink1: '/whisky',
+    },
+    {
+      image: '/belvedere.webp',
+      title: 'Les vodkas Belvedere',
+      description:
+        'À travers sa collection de vodkas, Belvedere offre une variété de saveurs distinctives, reflets du terroir et de son savoir-faire.',
+      ctaText1: 'Découvrir',
+      ctaLink1: '/champagne',
+    },
+    {
+      image: '/ruinart.jpg',
+      title: 'La maison Ruinart',
+      description:
+        'Depuis 1729, la Maison Ruinart est le plus ancienne Maison de Champagne.',
+      ctaText1: 'Découvrir',
+      ctaLink1: '/champagne',
     },
   ];
 
