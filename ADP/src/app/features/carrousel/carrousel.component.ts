@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,7 +14,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './carrousel.component.scss',
 })
 export class CarrouselComponent implements OnInit, OnDestroy {
-  slides = [
+  @Input() slides: any[] = []; // Les slides sont maintenant passées en entrée
+  @Input() currentSlide: number = 0; // La slide active est passée en entrée
+
+  slidesMock = [
     {
       image: '/banner.jpg',
       title: 'ADP votre cave en ligne',
@@ -40,12 +49,30 @@ export class CarrouselComponent implements OnInit, OnDestroy {
       ctaText1: 'Découvrir',
       ctaLink1: '/champagne',
     },
+    {
+      image: '/blancdeb_ruinart.avif',
+      title: 'Nouveaux whiskies',
+      description: 'Dégustez nos single malt.',
+      ctaText1: 'Explorer',
+      ctaLink1: '/whisky',
+    },
+    {
+      image: '/Blanc_ruinart.avif',
+      title: 'Ruinart blanc de blancs',
+      description:
+        'La cuvée Ruinart Blanc de Blancs est un vin délicat entre fraîcheur et rondeur',
+      ctaText1: 'Découvrir',
+      ctaLink1: '/champagne',
+    },
   ];
 
-  currentSlide = 0;
+  //currentSlide = 0;
   private interval: any;
 
   ngOnInit() {
+    if (this.slides.length == 0) {
+      this.slides = this.slidesMock;
+    }
     this.startAutoSlide();
   }
 
