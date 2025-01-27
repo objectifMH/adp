@@ -267,31 +267,33 @@
       }
     }
 
-    .prev,
-    .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.15);
-      color: white;
-      border: none;
-      padding: 3px;
-      cursor: pointer;
-      font-size: 24px;
-      transition: transform 0.3s ease;
-      z-index: 3;
+    &:hover {
+      .prev,
+      .next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.15);
+        color: white;
+        border: none;
+        padding: 3px;
+        cursor: pointer;
+        font-size: 24px;
+        transition: transform 0.3s ease;
+        z-index: 3;
 
-      &:hover {
-        transform: translateY(-50%) scale(1.3);
+        &:hover {
+          transform: translateY(-50%) scale(1.3);
+        }
       }
-    }
 
-    .prev {
-      left: 10px;
-    }
+      .prev {
+        left: 10px;
+      }
 
-    .next {
-      right: 10px;
+      .next {
+        right: 10px;
+      }
     }
 
     .indicators {
