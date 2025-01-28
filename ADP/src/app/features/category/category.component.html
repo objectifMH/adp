@@ -1,0 +1,19 @@
+<section id="category">
+    <h2 class="section-title">Explorez nos catégories</h2>
+
+    <div class="category-container">
+        @for (category of categories; track category.id) {
+        <div class="category-card">
+            <a [routerLink]="category.link">
+                <img [src]="category.image" [alt]="category.name" class="category-image" />
+                <div class="category-overlay">
+                    <h3 class="category-name">{{ category.name }}</h3>
+                </div>
+            </a>
+        </div>
+        } @empty {
+        <p>Aucune catégorie disponible pour le moment.</p>
+        }
+    </div>
+
+</section>

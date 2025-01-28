@@ -15,6 +15,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background: linear-gradient(150deg, rgb(68 68 68), #1e1e1e);
 }
 
 .site-container {
@@ -26,11 +27,15 @@ body {
 .main-content {
   flex: 1;
   margin-top: 50px;
+  margin: 50px 0px;
   background: linear-gradient(
     150deg,
     var(--primary-color),
     var(--primary-color-gradient)
   );
+  background: linear-gradient(150deg, rgb(68 68 68), #1e1e1e);
+
+  background: white;
 }
 
 :root {
@@ -54,7 +59,7 @@ body {
   --text-color: #333333;
 
   --wavy-text-body-bg-color: #c44569;
-  --wavy-text-body-color: #fff;
+  --text-body-color: #fff;
   --wavy-text-font-family: "Fascinate Inline", sans-serif;
   --wavy-text-animation-speed: 1s;
 }

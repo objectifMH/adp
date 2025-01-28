@@ -4,6 +4,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CarrouselComponent } from './features/carrousel/carrousel.component';
 import { ContentCarrouselPanelComponent } from './features/content-carrousel-panel/content-carrousel-panel.component';
+import { CategoryComponent } from './features/category/category.component';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { ContentCarrouselPanelComponent } from './features/content-carrousel-pan
     HeaderComponent,
     FooterComponent,
     CarrouselComponent,
-    ContentCarrouselPanelComponent
+    ContentCarrouselPanelComponent,
+    CategoryComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

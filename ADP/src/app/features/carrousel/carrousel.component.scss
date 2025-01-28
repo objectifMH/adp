@@ -42,7 +42,7 @@
       top: 50%;
       transform: translateY(-50%);
       background-color: rgba(0, 0, 0, 0.15);
-      color: white;
+      color: var(--text-body-color);
       border: none;
       padding: 3px;
       cursor: pointer;
@@ -115,7 +115,7 @@
 .caption {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.9);
-  color: white;
+  color: var(--text-body-color);
   padding: 20px;
   //border-radius: 10px;
   max-width: 70%; /* Limite la largeur pour éviter que le bouton n'empiète */
@@ -147,7 +147,7 @@
 
   font-weight: bold;
   margin-bottom: 20px;
-  color: var(--secondary-color);
+  color: var(--text-body-color);
   text-transform: uppercase;
   letter-spacing: 2px;
   position: relative;
