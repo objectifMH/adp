@@ -1,0 +1,174 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == small-mobile {
+    @media (max-width: 374px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (min-width: 375px) and (max-width: 424px) {
+      @content;
+    }
+  } @else if $breakpoint == large-mobile {
+    @media (min-width: 425px) and (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == small-desktop {
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Le point de rupture '#{$breakpoint}' n'est pas reconnu.";
+  }
+}
+
+#services-avantages {
+  margin: 60px 15px;
+
+  /* Titre de la section */
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    margin-bottom: 35px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 4px;
+      width: calc(3ch + 0.2em);
+      background-color: var(--secondary-color);
+
+      @include respond-to(tablet) {
+        height: 6px;
+        bottom: -5px;
+      }
+
+      @include respond-to(small-desktop) {
+        height: 6px;
+        bottom: -5px;
+      }
+
+      @include respond-to(desktop) {
+        height: 6px;
+        bottom: -5px;
+      }
+    }
+
+    @include respond-to(tablet) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(small-desktop) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 32px;
+      letter-spacing: 4px;
+    }
+  }
+
+  /* Conteneur des services */
+  .services-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+
+    @include respond-to(small-mobile) {
+      grid-template-columns: repeat(1, 1fr); // 1 colonne en petit mobile
+    }
+
+    @include respond-to(mobile) {
+      grid-template-columns: repeat(2, 1fr); // 2 colonnes en mobile
+    }
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(3, 1fr); // 3 colonnes en tablette
+    }
+
+    @include respond-to(small-desktop) {
+      grid-template-columns: repeat(4, 1fr); // 4 colonnes en petit desktop
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(4, 1fr); // 4 colonnes en desktop
+    }
+  }
+
+  /* Carte des services */
+  .service-card {
+    position: relative;
+    overflow: hidden;
+    //border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: rgba(8, 8, 8, 0.815);
+    padding: 16px;
+    text-align: center;
+
+    &:hover {
+      //transform: scale(1.05);
+      //box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Icône du service */
+    .service-icon {
+      margin-bottom: 16px;
+      color: var(--secondary-color);
+    }
+
+    /* Contenu textuel */
+    .service-content {
+      .service-title {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin-bottom: 8px;
+
+        @include respond-to(desktop) {
+          font-size: 18px;
+        }
+      }
+
+      .service-description {
+        font-size: 14px;
+        color: var(--text-body-color);
+        margin: 0;
+
+        @include respond-to(desktop) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  /* Message lorsqu'il n'y a pas de services */
+  .services-container p {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-top: 20px;
+
+    @include respond-to(tablet) {
+      font-size: 18px;
+    }
+  }
+}

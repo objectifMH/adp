@@ -1,0 +1,19 @@
+<div class="brand-carousel">
+    <div class="brand-carousel-track" #carouselTrack>
+        @for (brand of brands; track brand.id) {
+        <div class="brand-carousel-item">
+            <img [src]="brand.image" [alt]="brand.name" class="brand-image" />
+        </div>
+        }
+        @for (brand of brands; track brand.id) {
+        <div class="brand-carousel-item ">
+            <img [src]="brand.image" [alt]="brand.name" class="brand-image" />
+        </div>
+        }
+        @for (brand of brands; track brand.id) {
+        <div class="brand-carousel-item ">
+            <img [src]="brand.image" [alt]="brand.name" class="brand-image" />
+        </div>
+        }
+    </div>
+</div>

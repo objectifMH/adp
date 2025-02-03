@@ -1,0 +1,245 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: 424px) {
+      @content;
+    }
+  } @else if $breakpoint == large-mobile {
+    @media (min-width: 425px) and (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == small-desktop {
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Le point de rupture '#{$breakpoint}' n'est pas reconnu.";
+  }
+}
+
+#faq {
+  margin: 60px 15px;
+
+  /* Titre de la section */
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    margin-bottom: 35px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 4px;
+      width: calc(3ch + 0.2em);
+      background-color: var(--secondary-color);
+
+      @include respond-to(tablet) {
+        height: 6px;
+        bottom: -5px;
+      }
+
+      @include respond-to(small-desktop) {
+        height: 6px;
+        bottom: -5px;
+      }
+
+      @include respond-to(desktop) {
+        height: 6px;
+        bottom: -5px;
+      }
+    }
+
+    @include respond-to(tablet) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(small-desktop) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 32px;
+      letter-spacing: 4px;
+    }
+  }
+
+  /* Conteneur des questions */
+  .faq-container {
+    //max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @include respond-to(mobile) {
+      padding: 0;
+    }
+  }
+
+  //
+
+  .faq-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+    @include respond-to(small-desktop) {
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    @include respond-to(desktop) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .faq-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-right: 20px;
+
+    @include respond-to(small-desktop) {
+      width: 40%;
+    }
+
+    @include respond-to(desktop) {
+      width: 40%;
+    }
+  }
+
+  .small-container {
+    width: 100%;
+
+    @include respond-to(small-desktop) {
+      width: 45%;
+    }
+
+    @include respond-to(desktop) {
+      width: 45%;
+    }
+  }
+
+  //
+
+  /* Carte de question */
+  .faq-item {
+    background-color: rgba(8, 8, 8, 0.815);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease, transform 0.3s ease,
+      background-color 0.3s ease;
+    overflow: hidden; /* Pour éviter les débordements lors des animations */
+
+    &:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      //transform: translateY(-5px); /* Légère élévation au survol */
+      background-color: rgba(8, 8, 8, 0.9); /* Assombrir légèrement le fond */
+    }
+
+    /* Question */
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+      cursor: pointer;
+
+      h3 {
+        font-size: 16px;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin: 0;
+        transition: color 0.3s ease;
+
+        @include respond-to(desktop) {
+          font-size: 18px;
+        }
+      }
+
+      .faq-icon {
+        color: var(--secondary-color);
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+    }
+
+    /* Effets de survol sur la question */
+    &:hover .faq-question h3 {
+      color: var(--secondary-color); /* Changement de couleur au survol */
+    }
+
+    &:hover .faq-question .faq-icon {
+      color: var(
+        --accent-color
+      ); /* Changement de couleur de l'icône au survol */
+      transform: scale(1.2); /* Légère mise à l'échelle de l'icône */
+    }
+
+    /* Réponse */
+    .faq-answer {
+      padding: 0 16px;
+      max-height: 0; /* Caché par défaut */
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: max-height 0.6s ease, opacity 0.6s ease, transform 0.8s ease;
+      will-change: max-height, opacity, transform;
+    }
+
+    .faq-answer p {
+      font-size: 14px;
+      color: var(--text-body-color);
+      margin: 0;
+      margin-bottom: 30px;
+
+      @include respond-to(desktop) {
+        font-size: 16px;
+      }
+    }
+
+    /* Quand l'élément est ouvert */
+    .faq-answer.open {
+      max-height: 1000px;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Version fermée */
+    .isClosed {
+      max-height: 1px;
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+  }
+
+  /* Message lorsqu'il n'y a pas de questions */
+  .faq-container p {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-top: 20px;
+
+    @include respond-to(tablet) {
+      font-size: 18px;
+    }
+  }
+}

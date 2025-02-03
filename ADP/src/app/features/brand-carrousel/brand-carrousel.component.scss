@@ -1,0 +1,76 @@
+.brand-carousel {
+  width: 85%;
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100px; /* Largeur de la zone floue */
+    height: 100%;
+    pointer-events: none; /* Empêche les interactions avec les zones floues */
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    z-index: 1; /* Assure que les zones floues sont au-dessus du contenu */
+  }
+
+  &::before {
+    left: 0;
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+  }
+
+  .brand-carousel-track {
+    display: flex;
+    animation: scroll 50s linear infinite;
+    position: relative;
+    z-index: 0; /* Assure que le contenu est en dessous des zones floues */
+
+    .brand-carousel-item {
+      flex: 0 0 auto;
+      margin: 40px 50px 0px;
+
+      .brand-image {
+        width: 150px;
+        height: auto;
+        border-radius: 8px;
+        filter: grayscale(100%); /* Applique un effet de grisaille */
+        transition: filter 0.3s ease; /* Ajoute une transition pour l'effet de grisaille */
+      }
+
+      &:hover .brand-image {
+        filter: grayscale(0%); /* Supprime l'effet de grisaille au survol */
+      }
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-350%);
+  }
+}
+
+.backred {
+  background: red;
+}
+
+.backgreen {
+  background: green;
+}

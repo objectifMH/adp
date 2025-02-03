@@ -38,7 +38,7 @@
 
 /* Titre de la section */
 .section-title {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
   text-align: center;
   margin-bottom: 20px;
@@ -54,7 +54,21 @@
     position: absolute;
     bottom: -5px; /* Ajustez la position verticale */
     left: 0;
-    height: 6px;
+    height: 4px;
+    @include respond-to(tablet) {
+      height: 6px;
+      bottom: -5px; /* Ajustez la position verticale */
+    }
+
+    @include respond-to(small-desktop) {
+      height: 6px;
+      bottom: -5px; /* Ajustez la position verticale */
+    }
+
+    @include respond-to(desktop) {
+      height: 6px;
+      bottom: -5px; /* Ajustez la position verticale */
+    }
   }
 
   &::before {

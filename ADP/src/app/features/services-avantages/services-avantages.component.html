@@ -1,0 +1,22 @@
+<section id="services-avantages">
+    <h2 class="section-title">Nos Services et Avantages</h2>
+
+    <div class="services-container">
+        @if (services.length > 0) {
+        @for (service of services; track service.id) {
+        <div class="service-card">
+            <div class="service-icon">
+                <!-- Utilisation de fa-icon pour afficher l'icône -->
+                <fa-icon [icon]="service.icon" size="2x"></fa-icon>
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">{{ service.title }}</h3>
+                <p class="service-description">{{ service.description }}</p>
+            </div>
+        </div>
+        }
+        } @else {
+        <p>Aucun service disponible pour le moment.</p>
+        }
+    </div>
+</section>

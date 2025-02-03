@@ -1,0 +1,12 @@
+<section id="commitments">
+    <h2 class="section-title">Nos Engagements envers Vous</h2>
+    <div class="commitments-container">
+        @for (commitment of commitments; track commitment.id) {
+        <div class="commitment-item">
+            <fa-icon [icon]="commitment.icon" class="commitment-icon"></fa-icon>
+            <h3 class="commitment-title">{{ commitment.title }}</h3>
+            <p class="commitment-description">{{ commitment.description }}</p>
+        </div>
+        }
+    </div>
+</section>

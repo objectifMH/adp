@@ -1,0 +1,45 @@
+<!-- <section id="selection">
+    <h2 class="section-title">Nos recommandations</h2>
+
+    <div class="selection-container">
+        @if (recommendations.length > 0) {
+        @for (item of recommendations; track item.id) {
+        <div class="selection-card">
+            <a [routerLink]="item.link">
+                <img [src]="item.image" [alt]="item.name" class="selection-image" />
+                <div class="selection-overlay">
+                    <h3 class="selection-name">{{ item.name }}</h3>
+                    <p class="selection-description">{{ item.description }}</p>
+                    <span class="selection-price">{{ item.price | currency:'EUR' }}</span>
+                </div>
+            </a>
+        </div>
+        }
+        } @else {
+        <p>Aucune recommandation disponible pour le moment.</p>
+        }
+    </div>
+</section>
+-->
+
+
+<section id="selection">
+    <h2 class="section-title">Nos recommandations</h2>
+
+    <div class="selection-container">
+        @if (recommendations.length > 0) {
+        @for (item of recommendations; track item.id) {
+        <div class="selection-card">
+            <img [src]="item.image" [alt]="item.name" class="selection-image" />
+            <div class="selection-content">
+                <h3 class="selection-name">{{ item.name }}</h3>
+                <!-- <p class="selection-description">{{ item.description }}</p> -->
+            </div>
+            <div class="selection-price">{{ item.price | currency:'EUR' }} </div>
+        </div>
+        }
+        } @else {
+        <p>Aucune recommandation disponible pour le moment.</p>
+        }
+    </div>
+</section>

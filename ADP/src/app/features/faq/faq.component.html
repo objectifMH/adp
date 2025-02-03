@@ -1,0 +1,31 @@
+<section id="faq">
+    <h2 class="section-title">Foire aux questions</h2>
+
+    <div class="faq-container">
+        <img src="faq.png" alt="illustration faq" class="faq-image" />
+
+        <div class="small-container">
+            @if (faqItems.length > 0) {
+            @for (item of faqItems; track item.id) {
+            <div class="faq-item" (click)="toggleAnswer(item.id)">
+                <div class="faq-question">
+                    <h3>{{ item.question }}</h3>
+                    <fa-icon [icon]="item.isOpen ? faChevronUp : faChevronDown" class="faq-icon"></fa-icon>
+                </div>
+                <div [class.faq-answer]="true" [class.open]="item.isOpen" [class.isClosed]="!item.isOpen">
+                    @if(item.isOpen) {
+                    <p [innerHTML]="item.answer"></p>
+                    }
+                </div>
+
+
+            </div>
+            }
+            } @else {
+            <p>Aucune question disponible pour le moment.</p>
+            }
+
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,237 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == small-mobile {
+    @media (max-width: 374px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (min-width: 375px) and (max-width: 424px) {
+      @content;
+    }
+  } @else if $breakpoint == large-mobile {
+    @media (min-width: 425px) and (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == small-desktop {
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Le point de rupture '#{$breakpoint}' n'est pas reconnu.";
+  }
+}
+
+// TEST 1
+#selection {
+  margin: 60px 15px;
+
+  /* Titre de la section */
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative; /* Nécessaire pour positionner les éléments ::before et ::after */
+    left: 20px;
+    margin-bottom: 35px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -5px; /* Ajustez la position verticale */
+      left: 0;
+      height: 4px;
+      @include respond-to(tablet) {
+        height: 6px;
+        bottom: -5px; /* Ajustez la position verticale */
+      }
+
+      @include respond-to(small-desktop) {
+        height: 6px;
+        bottom: -5px; /* Ajustez la position verticale */
+      }
+
+      @include respond-to(desktop) {
+        height: 6px;
+        bottom: -5px; /* Ajustez la position verticale */
+      }
+    }
+
+    &::before {
+      width: calc(3ch + 0.2em); // Largeur basée sur 3 caractères + espacement
+      background-color: var(--secondary-color);
+    }
+
+    @include respond-to(tablet) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(small-desktop) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 32px;
+      letter-spacing: 4px;
+    }
+  }
+
+  /* Conteneur des recommandations */
+  .selection-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+
+    @include respond-to(small-mobile) {
+      grid-template-columns: repeat(2, 1fr); // 2 colonnes en mobile
+    }
+
+    @include respond-to(mobile) {
+      grid-template-columns: repeat(2, 1fr); // 2 colonnes en mobile
+    }
+
+    @include respond-to(large-mobile) {
+      grid-template-columns: repeat(2, 1fr); // 3 colonnes en grand mobile
+    }
+
+    @include respond-to(tablet) {
+      grid-template-columns: repeat(3, 1fr); // 4 colonnes en tablette
+    }
+
+    @include respond-to(small-desktop) {
+      grid-template-columns: repeat(4, 1fr); // 4 colonnes en petit desktop
+    }
+
+    @include respond-to(desktop) {
+      grid-template-columns: repeat(5, 1fr); // 5 colonnes en desktop
+    }
+  }
+
+  /* Carte des recommandations */
+  .selection-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    @include respond-to(small-mobile) {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+
+    @include respond-to(tablet) {
+      flex: 1 1 calc(50% - 32px);
+      //max-width: calc(50% - 32px);
+    }
+
+    /* Image de la recommandation */
+    .selection-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+
+      @include respond-to(desktop) {
+        height: 250px;
+      }
+    }
+
+    /* Contenu textuel sous l'image */
+    .selection-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.5)
+      );
+      padding: 16px;
+
+      .selection-name {
+        font-size: 12px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--text-body-color);
+        margin: 0;
+
+        @include respond-to(tablet) {
+          font-size: 12px;
+        }
+
+        @include respond-to(small-desktop) {
+          font-size: 16px;
+        }
+
+        @include respond-to(desktop) {
+          font-size: 18px;
+        }
+      }
+
+      .selection-description {
+        font-size: 14px;
+        margin: 0;
+        color: #666;
+
+        @include respond-to(desktop) {
+          font-size: 16px;
+        }
+      }
+    }
+
+    /* Positionnement du prix */
+    .selection-price {
+      font-size: 12px;
+      font-weight: bold;
+      color: var(--secondary-color);
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      border-radius: 8px;
+      background: gray;
+      padding: 5px 8px;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.5)
+      );
+
+      @include respond-to(desktop) {
+        font-size: 14px;
+      }
+    }
+  }
+
+  /* Message lorsqu'il n'y a pas de recommandations */
+  .selection-container p {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    margin-top: 20px;
+
+    @include respond-to(tablet) {
+      font-size: 18px;
+    }
+  }
+}
