@@ -5,6 +5,7 @@ import {
   faCreditCard,
   faHeadset,
   faUndo,
+  faGift,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -25,27 +26,34 @@ export class ServicesAvantagesComponent {
   services = [
     {
       id: 1,
-      icon: this.faTruck, // Utilisation de l'icône FontAwesome
-      title: 'Livraison Rapide',
-      description: 'Livraison en 24h à Paris et en 48h en France.',
+      icon: faTruck,
+      title: 'Livraison Rapide en IDF',
+      description: 'Livraison en 24h à Paris et en 48h en Île-de-France.',
     },
     {
       id: 2,
-      icon: this.faCreditCard, // Utilisation de l'icône FontAwesome
-      title: 'Paiement Sécurisé',
-      description: 'Paiement 100% sécurisé avec cryptage SSL.',
+      icon: faCreditCard,
+      title: 'Paiement Flexible',
+      description: 'Payez en ligne ou à la livraison selon votre préférence.',
     },
     {
       id: 3,
-      icon: this.faHeadset, // Utilisation de l'icône FontAwesome
-      title: 'Support Client',
-      description: 'Assistance 7j/7 par téléphone et email.',
+      icon: faHeadset,
+      title: 'Service Client Réactif',
+      description:
+        'Contactez-nous par téléphone ou par mail pour toute question.',
     },
     {
       id: 4,
-      icon: this.faUndo, // Utilisation de l'icône FontAwesome
-      title: 'Retour Facile',
-      description: 'Retours gratuits sous 30 jours.',
+      icon: faUndo,
+      title: 'Retour et Remplacement Faciles',
+      description: 'Un problème ? On s’occupe de l’échange ou du retour.',
+    },
+    {
+      id: 5,
+      icon: faGift,
+      title: 'Offres Exclusives',
+      description: 'Des réductions et promotions sur nos meilleurs alcools.',
     },
   ];
 }

@@ -1,0 +1,54 @@
+<section id="contact">
+    <h2 class="section-title">Contactez-nous</h2>
+
+    <div class="contact-container">
+        <!-- Informations de contact -->
+        <div class="contact-info">
+            @for (info of contactInfos; track info.id) {
+            <div class="contact-item">
+                <fa-icon [icon]="info.icon" class="contact-icon"></fa-icon>
+                <p class="contact-text">{{ info.text }}</p>
+            </div>
+            }
+        </div>
+
+        <!-- Formulaire de contact -->
+        <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="name">Nom</label>
+                <input id="name" type="text" placeholder="Votre nom" formControlName="name" />
+                @if (contactForm.get('name')?.invalid && contactForm.get('name')?.touched) {
+                <div class="error-message">
+                    Le nom est requis et doit contenir au moins 2 caractères.
+                </div>
+                }
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" placeholder="Votre email" formControlName="email" />
+                @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+                <div class="error-message">
+                    Veuillez entrer une adresse email valide.
+                </div>
+                }
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Votre message" formControlName="message"></textarea>
+                @if (contactForm.get('message')?.invalid && contactForm.get('message')?.touched) {
+                <div class="error-message">
+                    Le message doit contenir au moins 10 caractères.
+                </div>
+                }
+            </div>
+            <button type="submit" class="submit-button" [disabled]="contactForm.invalid || isLoading">
+                @if (!isLoading) {
+                <span>Envoyer</span>
+                } @else {
+                <span>Envoi en cours...</span>
+                <fa-icon [icon]="faSpinner" [spin]="true"></fa-icon>
+                }
+            </button>
+        </form>
+    </div>
+</section>

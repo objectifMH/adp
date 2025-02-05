@@ -1,0 +1,202 @@
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == small-mobile {
+    @media (max-width: 374px) {
+      @content;
+    }
+  } @else if $breakpoint == mobile {
+    @media (min-width: 375px) and (max-width: 424px) {
+      @content;
+    }
+  } @else if $breakpoint == large-mobile {
+    @media (min-width: 425px) and (max-width: 767px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) and (max-width: 1023px) {
+      @content;
+    }
+  } @else if $breakpoint == small-desktop {
+    @media (min-width: 1024px) and (max-width: 1279px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  } @else {
+    @warn "Le point de rupture '#{$breakpoint}' n'est pas reconnu.";
+  }
+}
+
+#contact {
+  margin: 60px 15px;
+
+  /* Titre de la section */
+  .section-title {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    left: 20px;
+    margin-bottom: 35px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      height: 4px;
+      width: calc(3ch + 0.2em);
+      background-color: var(--secondary-color);
+
+      @include respond-to(tablet) {
+        height: 6px;
+        bottom: -5px;
+      }
+
+      @include respond-to(small-desktop) {
+        height: 6px;
+        bottom: -5px;
+      }
+
+      @include respond-to(desktop) {
+        height: 6px;
+        bottom: -5px;
+      }
+    }
+
+    @include respond-to(tablet) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(small-desktop) {
+      font-size: 28px;
+      letter-spacing: 4px;
+    }
+
+    @include respond-to(desktop) {
+      font-size: 32px;
+      letter-spacing: 4px;
+    }
+  }
+
+  /* Conteneur principal */
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  /* Informations de contact */
+  .contact-info {
+    background-color: rgba(8, 8, 8, 0.815);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .contact-icon {
+        font-size: 24px;
+        color: var(--secondary-color);
+        margin-right: 16px;
+      }
+
+      .contact-text {
+        font-size: 14px;
+        color: var(--text-body-color);
+        margin: 0;
+
+        @include respond-to(desktop) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  /* Formulaire de contact */
+  .contact-form {
+    background-color: rgba(8, 8, 8, 0.815);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    .form-group {
+      margin-bottom: 16px;
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: var(--text-body-color);
+        font-size: 14px;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 4px;
+        background-color: transparent;
+        color: var(--text-body-color);
+        font-size: 14px;
+
+        &::placeholder {
+          color: var(--text-body-color);
+          opacity: 0.7;
+        }
+
+        &:focus {
+          outline: none;
+          border-color: var(--secondary-color);
+        }
+      }
+
+      textarea {
+        height: 120px;
+        resize: vertical;
+      }
+
+      .error-message {
+        color: #ff6b6b;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+    }
+
+    .submit-button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: var(--secondary-color);
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

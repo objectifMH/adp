@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaqComponent } from './features/faq/faq.component';
 import { BrandCarrouselComponent } from './features/brand-carrousel/brand-carrousel.component';
 import { EngagementComponent } from './features/engagement/engagement.component';
+import { ContactComponent } from './features/contact/contact.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +27,7 @@ import { EngagementComponent } from './features/engagement/engagement.component'
     FaqComponent,
     BrandCarrouselComponent,
     EngagementComponent,
+    ContactComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

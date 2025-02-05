@@ -6,6 +6,8 @@ import {
   faLeaf,
   faRocket,
   faLightbulb,
+  faRecycle,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -27,35 +29,35 @@ export class EngagementComponent {
   commitments = [
     {
       id: 1,
-      icon: faShieldAlt,
-      title: 'Sécurité des Données',
+      icon: faRecycle,
+      title: 'Anti-Gaspillage',
       description:
-        'Nous protégeons vos données avec les normes les plus strictes.',
+        'Nous récupérons les invendus pour leur donner une seconde vie.',
     },
-    {
+    /** {
       id: 2,
-      icon: faHandshake,
-      title: 'Service Client 24/7',
-      description: 'Notre équipe est disponible à tout moment pour vous aider.',
-    },
+      icon: faLeaf,
+      title: 'Engagement Écoresponsable',
+      description:
+        'Nous réduisons le gaspillage et privilégions une logistique durable.',
+    },*/
     {
       id: 3,
-      icon: faLeaf,
-      title: 'Engagement Écologique',
-      description: 'Nous nous engageons à réduire notre empreinte carbone.',
+      icon: faShieldAlt,
+      title: 'Produits de Qualité',
+      description: 'Nous travaillons avec des marques d’alcool reconnues.',
     },
     {
       id: 4,
-      icon: faRocket,
-      title: 'Livraison Rapide',
-      description: 'Nous livrons vos commandes en moins de 48 heures.',
+      icon: faHandshake,
+      title: 'Transparence et Confiance',
+      description: 'Nous garantissons une traçabilité claire des produits.',
     },
     {
       id: 5,
-      icon: faLightbulb,
-      title: 'Innovation Continue',
-      description:
-        'Nous améliorons constamment nos services pour vous offrir le meilleur.',
+      icon: faStar,
+      title: 'Satisfaction Client',
+      description: 'Nos clients bénéficient de services et produits vérifiés.',
     },
   ];
 }
