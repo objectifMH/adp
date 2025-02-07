@@ -23,9 +23,13 @@
     @warn "Le point de rupture '#{$breakpoint}' n'est pas reconnu.";
   }
 }
-
 #faq {
-  margin: 60px 15px;
+  padding: 20px;
+  background: linear-gradient(150deg, #c1c1c136, #ffffff94);
+}
+
+.faq-section-container {
+  margin: 30px 15px;
 
   /* Titre de la section */
   .section-title {
@@ -148,6 +152,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease, transform 0.3s ease,
       background-color 0.3s ease;
+    transition: all cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden; /* Pour éviter les débordements lors des animations */
 
     &:hover {

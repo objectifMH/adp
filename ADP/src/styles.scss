@@ -26,14 +26,13 @@ body {
 
 .main-content {
   flex: 1;
-  margin-top: 50px;
-  margin: 50px 0px;
+  margin-top: 60px;
   background: linear-gradient(
     150deg,
     var(--primary-color),
     var(--primary-color-gradient)
   );
-  background: linear-gradient(150deg, rgb(68 68 68), #1e1e1e);
+  //background: linear-gradient(150deg, rgb(68 68 68), #1e1e1e);
 
   background: white;
 }
