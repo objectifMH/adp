@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-brand-carrousel',
@@ -18,4 +18,8 @@ export class BrandCarrouselComponent {
     { id: 7, name: 'Moet & Chandon', image: 'brands/moet.svg' },
     { id: 8, name: 'Ruinart', image: 'brands/ruinart.png' },
   ];
+
+  trackById(index: number, brand: any): number {
+    return brand.id;
+  }
 }

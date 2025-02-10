@@ -1,15 +1,63 @@
-<div class="brand-carousel">
-    <div class="brand-carousel-track" #carouselTrack>
-        @for (brand of brands; track brand.id) {
-        <div class="brand-carousel-item">
-            <img [src]="brand.image" [alt]="brand.name" class="brand-image" />
+<div class="slider">
+    <div class="slide-track">
+        @for( brand of brands; track brand.id )
+        {
+        <div class="slide">
+            <img [src]="brand.image" [alt]="brand.name" />
         </div>
         }
-        @for (brand of brands; track brand.id) {
-        <div class="brand-carousel-item ">
-            <img [src]="brand.image" [alt]="brand.name" class="brand-image" />
+        @for( brand of brands; track brand.id )
+        {
+        <div class="slide">
+            <img [src]="brand.image" [alt]="brand.name" />
         </div>
         }
+        <!-- 
 
+        inspire de https://codepen.io/studiojvla/pen/qVbQqW 
+        
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/5.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png" height="100" width="250" alt="" />
+        </div>
+        <div class="slide">
+            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png" height="100" width="250" alt="" />
+        </div>
     </div>
 </div>
+-->

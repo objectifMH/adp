@@ -14,12 +14,12 @@ export class SelectionComponent {
   // Mock de données si aucune donnée n'est fournie
   recommendationsMock = [
     {
-      id: 10,
-      name: 'Jack Daniels',
-      image: '/bouteille/jack_daniels.png',
-      link: '/bouteille/jack-daniels',
-      price: 27.99,
-      description: 'Whisky Jack Daniels Old No. 7 70cl, icône du Tennessee.',
+      id: 1,
+      name: "Jus d'ananas",
+      image: '/bouteille/jus_ananas.jpg',
+      link: '/bouteille/jus-ananas',
+      price: 4.99,
+      description: "Bouteille de jus d'ananas 1L, fraîche et naturelle.",
     },
     {
       id: 2,
@@ -59,7 +59,7 @@ export class SelectionComponent {
     {
       id: 6,
       name: 'Belvedere Magnum',
-      image: '/bouteille/belvedere magnum.jpg',
+      image: '/bouteille/belvedere_magnum.jpg',
       link: '/bouteille/belvedere-magnum',
       price: 79.99,
       description:
@@ -93,11 +93,11 @@ export class SelectionComponent {
     },
     {
       id: 10,
-      name: "Jus d'ananas",
-      image: '/bouteille/jus_ananas.jpg',
-      link: '/bouteille/jus-ananas',
-      price: 4.99,
-      description: "Bouteille de jus d'ananas 1L, fraîche et naturelle.",
+      name: 'Jack Daniels',
+      image: '/bouteille/jack_daniels.png',
+      link: '/bouteille/jack-daniels',
+      price: 27.99,
+      description: 'Whisky Jack Daniels Old No. 7 70cl, icône du Tennessee.',
     },
     /** 
     {
