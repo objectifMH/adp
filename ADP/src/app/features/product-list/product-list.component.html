@@ -1,5 +1,10 @@
 <div class="product-list">
-    <h2>Tous les produits</h2>
+    <h2>Tous les produits ({{products.length}})</h2>
+
+    @for (category of categories; track category.id) {
+    {{category.name}}
+    }
+
 
     <!-- Filtres par catégorie -->
     <div class="filters">
@@ -32,6 +37,8 @@
                 {{ product.price | currency:'EUR' }}
                 }
             </p>
+            <p class="product-tags">Tags: {{ product.tags.join(', ') }}</p>
+
             <!--
                 <p class="product-stock">Stock: {{ product.stock }}</p> 
                 <p class="product-rating">Rating: {{ product.rating }} ({{ product.reviews }} reviews)</p>

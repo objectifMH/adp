@@ -27,7 +27,7 @@ export class CarrouselComponent implements OnInit, OnDestroy {
       ctaLink1: '/products',
     },
     {
-      image: '/back_light.jpg',
+      image: '/landing1.webp',
       title: 'Nouveaux whiskies',
       description: 'Dégustez nos single malt.',
       ctaText1: 'Explorer',
@@ -50,7 +50,7 @@ export class CarrouselComponent implements OnInit, OnDestroy {
       ctaLink1: '/champagne',
     },
     {
-      image: '/blancdeb_ruinart.avif',
+      image: '/landing2.webp',
       title: 'Nouveaux whiskies',
       description: 'Dégustez nos single malt.',
       ctaText1: 'Explorer',
