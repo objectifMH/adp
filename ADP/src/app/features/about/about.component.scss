@@ -1,0 +1,23 @@
+.about-section {
+  text-align: center;
+  padding: 40px;
+}
+
+.about-content {
+  margin: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+}
+
+.about-content img {
+  max-width: 400px;
+  //border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.about-text {
+  max-width: 600px;
+  text-align: left;
+}

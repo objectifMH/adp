@@ -1,79 +1,45 @@
+<div class="sort-options">
+    <label for="sort">Trier par :</label>
+    <select id="sort" (change)="sortProducts($event)">
+        <option value="name">Nom</option>
+        <option value="price">Prix</option>
+        <option value="discountedPrice">Prix réduit</option>
+        <option value="volume">Volume</option>
+        <option value="alcoholContent">Taux d'alcool</option>
+    </select>
+</div>
+
 <div class="product-list">
-    <h2>Tous les produits ({{products.length}})</h2>
-
-    @for (category of categories; track category.id) {
-    {{category.name}}
-    }
-
-
-    <!-- Filtres par catégorie -->
-    <div class="filters">
-        <select [(ngModel)]="selectedCategory" (change)="filterProducts()">
-            <option value="">Toutes les catégories</option>
-            @for (category of categories; track category.id) {
-            <option [value]="category.id">{{ category.name }}</option>
-            }
-        </select>
-    </div>
-
-    <!-- Liste des produits filtrés -->
-    <div class="products-grid">
-        @for (product of filteredProducts; track product.id) {
-        <div class="product-card" (click)="navigateToProduct(product)">
-            @if (product.promotion) {
-            <div class="promotion-badge">Promo</div>
-            }
-            <img [src]="product.image" [alt]="product.name" class="product-image" />
-            <h3 class="product-name">{{ product.name }}</h3>
-            <p class="product-volume">{{ product.volume }}</p> <!-- Ajout du volume -->
-            <p class="product-price">
-                @if (product.promotion) {
-                <span class="original-price">{{ product.price | currency:'EUR' }}</span>
-                <span class="discounted-price">
-                    {{ product.price * (1 - product.discountPercentage / 100) | currency:'EUR' }}
-                </span>
-                <span class="discount-percentage">({{ product.discountPercentage }}% de réduction)</span>
-                } @else {
-                {{ product.price | currency:'EUR' }}
-                }
-            </p>
-            <p class="product-tags">Tags: {{ product.tags.join(', ') }}</p>
-
-            <!--
-                <p class="product-stock">Stock: {{ product.stock }}</p> 
-                <p class="product-rating">Rating: {{ product.rating }} ({{ product.reviews }} reviews)</p>
-                <p class="product-tags">Tags: {{ product.tags.join(', ') }}</p> 
-            -->
-        </div>
-        }
-    </div>
-
-    <!-- Section des promotions -->
-    @if (promotedProducts.length != 0 ) {
-    <div class="promotions-section">
-        <h2>Promotions</h2>
-        <div class="promotions-grid">
-            @for (product of promotedProducts; track product.id) {
-            <div class="product-card" (click)="navigateToProduct(product)">
-                <div class="promotion-badge">Promo</div>
+    @for (product of products; track product.id) {
+    <div class="product-card">
+        <a [routerLink]="product.link" class="product-link">
+            <div class="product-image-container">
                 <img [src]="product.image" [alt]="product.name" class="product-image" />
-                <h3 class="product-name">{{ product.name }}</h3>
-                <p class="product-volume">{{ product.volume }}</p> <!-- Ajout du volume -->
-                <p class="product-price">
-                    <span class="original-price">{{ product.price | currency:'EUR' }}</span>
-                    <span class="discounted-price">
-                        {{ product.price * (1 - product.discountPercentage / 100) | currency:'EUR' }}
-                    </span>
-                    <span class="discount-percentage">(-{{ product.discountPercentage }}%)</span>
-                </p>
-                <!--
-                <p class="product-stock">Stock: {{ product.stock }}</p> 
-                <p class="product-rating">Rating: {{ product.rating }} ({{ product.reviews }} reviews)</p>
-                <p class="product-tags">Tags: {{ product.tags.join(', ') }}</p> 
-            -->
+                @if (product.promotion) {
+                <div class="product-promotion">
+                    <span class="discount-badge">-{{ product.discountPercentage }}%</span>
+                </div>
+                }
             </div>
-            }
-        </div>
+            <div class="product-info">
+                <h3 class="product-name">{{ product.name }}</h3>
+                <div class="product-details">
+                    <span class="product-volume">📏 {{ product.volume }}</span>
+                    <span class="product-alcohol-content">🍾 {{ product.alcoholContent }}% vol.</span>
+                </div>
+                <div class="product-price-rating">
+                    @if (product.promotion) {
+                    <div class="price-container">
+                        <p class="original-price">{{ product.price | currency:'EUR' }}</p>
+                        <p class="discounted-price">{{ calculateDiscountedPrice(product) | currency:'EUR' }}</p>
+                    </div>
+                    } @else {
+                    <p class="product-price">{{ product.price | currency:'EUR' }}</p>
+                    }
+                </div>
+                <button class="add-to-cart-button">Ajouter au panier</button>
+            </div>
+        </a>
     </div>
     }
 </div>

@@ -1,6 +1,7 @@
 <header class="header">
-    <div class="logo"><i class="fas fa-map-marker-alt"></i> &nbsp;ALCOOL DEPOT VENTE </div>
-
+    <a routerLink="/home">
+        <div class="logo"><i class="fas fa-map-marker-alt"></i> &nbsp;ALCOOL DEPOT VENTE </div>
+    </a>
     <!-- Icône du menu (hamburger ou croix) -->
     <div class="menu-icon" (click)="toggleMenu()">
         @if (!isMenuOpen) {
@@ -14,7 +15,7 @@
     <nav class="nav-mobile" [class.active]="isMenuOpen">
         <a routerLink="/home">Accueil</a>
         <a routerLink="/products">Produits</a>
-        <a href=" #">À propos</a>
+        <a routerLink="/about">À propos</a>
         <a routerLink="/contact">Contact</a>
     </nav>
 
@@ -22,7 +23,7 @@
     <nav class="nav-desktop">
         <a routerLink="/home">Accueil</a>
         <a routerLink="/products">Produits</a>
-        <a href=" #">À propos</a>
+        <a routerLink="/about">À propos</a>
         <a routerLink="/contact">Contact</a>
 
     </nav>
