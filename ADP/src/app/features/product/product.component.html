@@ -1,0 +1,172 @@
+<div class="product-detail-container">
+    <div class="product-header">
+        <div class="product-image-container">
+            <img class="product-image" [src]="product.image || '/api/placeholder/300/400'" [alt]="product.name">
+            @if(product.promotion) {
+            <div class="promotion-badge">-{{ product.discountPercentage }}%</div>
+            }
+        </div>
+
+        <div class="product-info">
+            <h1 class="product-name">{{ product.name }}</h1>
+
+            <div class="product-meta">
+                <span class="product-brand">{{ product.brand }}</span>
+                <div class="product-rating">
+                    <div class="stars">
+                        @for (star of getStars(product.rating); track $index) {
+                        @if (star === 'full') {
+                        <i class="fas fa-star"></i>
+                        } @else if (star === 'half') {
+                        <i class="fas fa-star-half-alt"></i>
+                        } @else {
+                        <i class="far fa-star"></i>
+                        }
+                        }
+                    </div>
+                    <span class="reviews">({{ product.reviews }} avis)</span>
+                </div>
+            </div>
+
+            <div class="product-description">
+                <p>{{ product.description }}</p>
+            </div>
+
+            <div class="product-details">
+                <span class="product-volume">Volume: {{ product.volume }}</span>
+                <span class="product-sku">Réf: {{ product.sku }}</span>
+            </div>
+            <div class="product-price-rating">
+                <div class="price-container">
+                    @if(product.promotion) {
+                    <!-- <span class="product-price">{{ getDiscountedPrice() | currency:'EUR':'symbol':'1.2-2':'fr' }}</span>
+                    -->
+                    <span class="original-price">{{ product.price | currency:'EUR' }}</span>
+                    <span class="product-price">{{ getDiscountedPrice() | currency:'EUR' }}</span>
+                    } @else {
+                    <span class="product-price">{{ product.price | currency:'EUR':'symbol'}}</span>
+                    }
+                </div>
+            </div>
+
+            <div class="product-options">
+                @if(product.availableSizes.length > 1) {
+                <div class="size-selector">
+                    <h3>Format :</h3>
+                    <div class="size-options">
+                        @for (size of product.availableSizes; track size) {
+                        <button [class.selected]="selectedSize === size" (click)="selectSize(size)">
+                            {{ size }}
+                        </button>
+                        }
+                    </div>
+                </div>
+                }
+
+                <div class="quantity-selector">
+                    <h3>Quantité :</h3>
+                    <div class="quantity-controls">
+                        <button (click)="decrementQuantity()">-</button>
+                        <span>{{ quantity }}</span>
+                        <button (click)="incrementQuantity()">+</button>
+                    </div>
+                    <span class="stock-info" [class.low-stock]="product.stock < 5">
+                        @if(product.stock > 0) {
+                        {{ product.stock }} en stock
+                        } @else {
+                        Rupture de stock
+                        }
+                    </span>
+                </div>
+            </div>
+
+            <button class="add-to-cart-button" (click)="addToCart()" [disabled]="product.stock === 0">
+                @if(product.stock > 0) {
+                Ajouter au panier
+                } @else {
+                Indisponible
+                }
+            </button>
+
+            <div class="product-tags">
+                @for (tag of product.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="product-tabs">
+        <div class="tabs-header">
+            @for (tab of tabs; track tab.id) {
+            <button class="tab" [class.active]="activeTab === tab.id" (click)="setActiveTab(tab.id)">
+                {{ tab.label }}
+            </button>
+            }
+        </div>
+
+        <div class="tabs-content">
+            @if (activeTab === 'details') {
+            <div class="tab-section">
+                <h3>Informations sur le produit</h3>
+                <ul class="details-list">
+                    <li><strong>Marque :</strong> {{ product.brand }}</li>
+                    <li><strong>Volume :</strong> {{ product.volume }}</li>
+                    <li><strong>Référence :</strong> {{ product.sku }}</li>
+                    <li><strong>Couleur :</strong> {{ product.color }}</li>
+                    <li><strong>Matériau :</strong> {{ product.material }}</li>
+                    <li><strong>Poids :</strong> {{ product.weight }}g</li>
+                    <li><strong>Date d'expiration :</strong> {{ formatDate(product.expirationDate) }}</li>
+                    @if(product.allergens.length > 0) {
+                    <li><strong>Allergènes :</strong> {{ product.allergens.join(', ') }}</li>
+                    }
+                </ul>
+            </div>
+            } @else if (activeTab === 'features') {
+            <div class="tab-section">
+                <h3>Caractéristiques techniques</h3>
+                <ul class="details-list">
+                    @for (feature of product.features; track feature.name) {
+                    <li><strong>{{ feature.name }} :</strong> {{ feature.value }}</li>
+                    }
+                    <li><strong>Dimensions :</strong> {{ product.dimensions.width }} × {{ product.dimensions.height }} ×
+                        {{ product.dimensions.depth }} cm</li>
+                    <li><strong>Informations nutritionnelles (pour 100ml) :</strong></li>
+                    <li class="nutrition-item">Calories: {{ product.nutritionFacts.calories }} kcal</li>
+                    <li class="nutrition-item">Glucides: {{ product.nutritionFacts.carbohydrates }}g</li>
+                    <li class="nutrition-item">Protéines: {{ product.nutritionFacts.protein }}g</li>
+                    <li class="nutrition-item">Matières grasses: {{ product.nutritionFacts.fat }}g</li>
+                </ul>
+            </div>
+            }
+            <!--  @else if (activeTab === 'reviews') {
+            <div class="tab-section">
+                <h3>Avis clients</h3>
+                @if (product.reviewsList?.length) {
+                <div class="reviews-list">
+                    @for (review of product.reviewsList; track review.id) {
+                    <div class="review-item">
+                        <div class="review-header">
+                            <span class="reviewer-name">{{ review.author }}</span>
+                            <div class="review-stars">
+                                @for (i of [1, 2, 3, 4, 5]; track i) {
+                                <i class="fas" [class.fa-star]="i <= review.rating"
+                                    [class.fa-star-o]="i > review.rating"></i>
+                                }
+                            </div>
+                        </div>
+                        <p class="review-text">{{ review.comment }}</p>
+                        @if(review.date) {
+                        <p class="review-date">{{ review.date }}</p>
+                        }
+                    </div>
+                    }
+                </div>
+                } @else {
+                <p>Aucun avis pour ce produit.</p>
+                }
+            </div>
+        }-->
+        </div>
+    </div>
+</div>

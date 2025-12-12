@@ -1,0 +1,374 @@
+// product-detail.component.scss
+:host {
+  font-family: "Roboto", sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+:root {
+  --primary-color: #003e59;
+  --primary-color-gradient: #40bcd6;
+  --secondary-color: #ffd700;
+  --accent-color: #ff8c00;
+  --background-color: #f5deb3;
+  --text-color: #333333;
+  --text-body-color: #fff;
+  --discount-color: #d32f2f;
+}
+
+.product-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px;
+  background-color: rgba(211, 211, 211, 0.123);
+}
+
+.product-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.product-image-container {
+  flex: 0 0 40%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: white;
+}
+
+.promotion-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: var(--accent-color);
+  color: white;
+  padding: 5px 10px;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-image {
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.product-info {
+  flex: 1;
+  padding: 25px;
+  background: rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-name {
+  font-size: 1.8rem;
+  margin: 0 0 10px;
+  color: var(--primary-color);
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-brand {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.product-rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.stars {
+  color: var(--accent-color);
+}
+
+.reviews {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.product-description {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 15px 0;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.product-volume {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.product-sku {
+  color: var(--text-color);
+}
+
+.product-price-rating {
+  margin: 15px 0;
+}
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.original-price {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.product-options {
+  display: flex;
+  gap: 25px;
+  margin: 20px 0;
+}
+
+.product-options h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.size-selector,
+.quantity-selector {
+  flex: 1;
+}
+
+.size-options {
+  display: flex;
+  gap: 10px;
+}
+
+.size-options button {
+  padding: 8px 15px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.size-options button.selected {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #ddd;
+  background: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.quantity-controls span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  min-width: 30px;
+  text-align: center;
+}
+
+.stock-info {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.low-stock {
+  color: var(--discount-color);
+  font-weight: bold;
+}
+
+.add-to-cart-button {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary-color);
+  color: var(--text-body-color);
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  margin: 10px 0;
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.tag {
+  background-color: var(--background-color);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  font-size: 0.9rem;
+}
+
+.product-tabs {
+  margin-top: 30px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.tabs-header {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.tabs-header .tab {
+  padding: 15px 25px;
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tabs-header .tab.active {
+  color: var(--primary-color);
+  font-weight: 600;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.tabs-content {
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.tab-section {
+  flex: 1;
+  min-width: 300px;
+}
+
+.tab-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+.details-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.details-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.details-list li:last-child {
+  border-bottom: none;
+}
+
+.details-list li strong {
+  color: var(--primary-color);
+}
+
+.nutrition-item {
+  padding-left: 20px;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.review-item {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.reviewer-name {
+  font-weight: 600;
+}
+
+.review-stars {
+  color: var(--accent-color);
+}
+
+.review-text {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.review-date {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #777;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .product-header {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .product-options {
+    flex-direction: column;
+  }
+}
